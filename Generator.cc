@@ -57,9 +57,9 @@ Generator* createGenerator(std::string str) {
   char *s3 = NULL;
 
   if (a_ptr) {
-    strtok_r(a_ptr, ",", &saveptr);
-    strtok_r(NULL, ",", &saveptr);
-    strtok_r(NULL, ",", &saveptr);
+    s1 = strtok_r(a_ptr, ",", &saveptr);
+    s2 = strtok_r(NULL, ",", &saveptr);
+    s3 = strtok_r(NULL, ",", &saveptr);
   }
 
   double a1 = s1 ? atof(s1) : 0.0;
