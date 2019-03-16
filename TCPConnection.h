@@ -91,6 +91,7 @@ private:
 #else
   KeyGenerator *keygen;
 #endif  
+  Generator *popularity;
   // Tracks the number of requests made on the current socket
   // Used to implement the "numreqperconn" feature  
   Generator* numreq_threshold_gen;

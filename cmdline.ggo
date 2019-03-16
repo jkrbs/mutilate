@@ -85,6 +85,7 @@ option "scan-search" - "Scan latency and search for the QPS. (i.e. \
 1000us, then go back one step, and do 50KPQS steps)." string
 option "src-port" - "A list of IP source ports to use in order to achieve \
 desired RSS queue distribution." string multiple
+option "popularity" - "Key popularity distribution." string default="uniform"
 
 text "\nAgent-mode options:"
 option "agentmode" A "Run client in agent mode."
@@ -147,3 +148,7 @@ The following QPS functions are supported:
    sin_noise:min:max:period:namp:nupdate    Sine wave plus noise.
 "
 
+text "
+The following popularity distributions are supported:
+   uniform                      Uniform distribution.
+"

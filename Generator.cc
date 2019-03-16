@@ -93,6 +93,19 @@ Generator* createGenerator(std::string str) {
   return NULL;
 }
 
+Generator *createPopularityGenerator(std::string str, long records) {
+  Generator *ret = NULL;
+  char *s1, *s2, *s3;
+  char *s_copy = parse_generator_string(str, &s1, &s2, &s3);
+
+  if (strcasestr(str.c_str(), "uniform")) ret = new Uniform(records);
+  else DIE("Unable to create Request Generator '%s'", str.c_str());
+
+  delete[] s_copy;
+
+  return ret;
+}
+
 void deleteGenerator(Generator* gen) {
   delete gen;
 }

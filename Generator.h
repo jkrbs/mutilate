@@ -279,6 +279,7 @@ Generator* createFacebookKey();
 Generator* createFacebookValue();
 Generator* createFacebookIA();
 Generator* createGenerator(std::string str);
+Generator *createPopularityGenerator(std::string str, long records);
 void deleteGenerator(Generator* gen);
 
 #endif // GENERATOR_H

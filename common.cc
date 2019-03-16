@@ -510,6 +510,7 @@ void args_to_options(options_t* options) {
   strncpy(options->valuesize, args.valuesize_arg, sizeof(options->valuesize));
   strncpy(options->getcount, args.getcount_arg, sizeof(options->getcount));
   strncpy(options->numreqperconn, args.numreqperconn_arg, sizeof(options->numreqperconn));
+  strncpy(options->popularity, args.popularity_arg, sizeof(options->popularity));
   options->update = args.update_arg;
   options->time = args.time_arg;
   options->loadonly = args.loadonly_given;

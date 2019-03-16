@@ -31,6 +31,7 @@ TCPConnection::TCPConnection(struct event_base* _base, struct evdns_base* _evdns
 #else
   keygen = new KeyGenerator(keysize, options.records);
 #endif
+  popularity = createPopularityGenerator(options.popularity, options.records);
   if (options.lambda <= 0) {
     iagen = createGenerator("0");
   } else {
@@ -149,7 +150,7 @@ void TCPConnection::issue_get(const char* key, double now) {
     keycount = min(keycount, 1000);
     for (i=1;i<keycount;i++) {
       reqval += string(" ");
-      reqval += keygen->generate(lrand48() % options.records);
+      reqval += keygen->generate(popularity->generate());
     }
     reqval += "\r\n";
     l = evbuffer_add_printf(bufferevent_get_output(bev), "%s", reqval.c_str());
@@ -206,7 +207,7 @@ void TCPConnection::issue_something(double now) {
 #ifdef USE_CUSTOM_PROTOCOL
   string keystr = customkeygen->generate();
 #else
-  string keystr = keygen->generate(lrand48() % options.records);
+  string keystr = keygen->generate(popularity->generate());
 #endif
   strcpy(key, keystr.c_str());
   //  int key_index = lrand48() % options.records;
