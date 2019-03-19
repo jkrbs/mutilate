@@ -151,4 +151,5 @@ The following QPS functions are supported:
 text "
 The following popularity distributions are supported:
    uniform                      Uniform distribution.
+   zipf:<theta>                 Zipf distribution.
 "

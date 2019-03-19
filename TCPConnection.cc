@@ -31,7 +31,7 @@ TCPConnection::TCPConnection(struct event_base* _base, struct evdns_base* _evdns
 #else
   keygen = new KeyGenerator(keysize, options.records);
 #endif
-  popularity = createPopularityGenerator(options.popularity, options.records);
+  popularity = createPopularityGenerator(options.popularity, options.records, options.permutation_seed);
   if (options.lambda <= 0) {
     iagen = createGenerator("0");
   } else {
